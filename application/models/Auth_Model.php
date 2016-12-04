@@ -11,8 +11,8 @@ class Auth_Model extends CI_Model
 
     public function user($username)
     {
-        $result = $this->Doctrine->em->getRepository('Entity\UserInformation')->find($username);
-        return $result;
+        $result = $this->doctrine->em->getRepository('Entity\UserInformation')->findBy(array('username' => $username));
+        return $result[0];
     }
 
     public function login($username, $password)
@@ -30,7 +30,6 @@ class Auth_Model extends CI_Model
           $this->update_last_login($user);
           return array(
               'username' => $user->getUserName(),
-              'access_level' => $user->getAccessLevel(),
               'old_last_login' => $user->getLastLogin()
           );
           return true;

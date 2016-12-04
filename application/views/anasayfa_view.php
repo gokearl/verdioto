@@ -3,14 +3,43 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title></title>
+	<style media="screen">
+		h2 {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<center>
+		<div class="w3-container w3-center">
 		<?php echo "<br/>" ?>
-		<li><h2><a href="<?php echo base_url(); ?>index.php/welcome/musteri_kayit"><font color="#c0248e">Yeni Müşteri Kaydı</a></font></h2></li>
-		<?php echo "<br/>" ?>
-		<?php echo "<br/>" ?>
-		<li><h2><a href="<?php echo base_url(); ?>index.php/welcome/musteri_sorgu"><font color="#c0248e">Müşteri Görüntüleme</a></font></h2></li>
+		<ul class="w3-navbar w3-border w3-light-grey">
+		<li class="w3-navitem"><h2><a href="<?php echo base_url(); ?>index.php/welcome/arac_sorgu">Araç Sorgu</a></h2></li>
+	</ul><br/>
+		<ul class="w3-navbar w3-border w3-light-grey">
+		<li class="w3-navitem"><h2><a href="<?php echo base_url(); ?>index.php/welcome/arac_kayit">Yeni Kayıt</a></h2></li>
+	</ul>
+			<!-- <button class="w3-btn w3-xlarge w3-blue"><a href="<?php echo base_url(); ?>index.php/welcome/arac_kayit">Yeni Kayıt</a></button>
+			<br/><br/>
+			<div class="w3-dropdown-click w3-left">
+			  <button onclick="dropDown()" class="w3-btn w3-blue w3-xlarge">Araç Sorgu</button>
+			  <div id="kriter" class="w3-dropdown-content w3-animate-zoom">
+				<input type="submit" name="dosyano" value="Dosya No">
+				<input type="submit" name="tcno" value="TC No">
+				<input type="submit" name="adsoyad" value="Ad Soyad">
+			  </div>
+			</div> -->
+		</div>
 	</center>
+	<script>
+	function dropDown() {
+	    var x = document.getElementById("kriter");
+	    if (x.className.indexOf("w3-show") == -1) {
+	        x.className += " w3-show";
+	    } else {
+	        x.className = x.className.replace(" w3-show", "");
+	    }
+	}
+	</script>
 </body>
 </html>

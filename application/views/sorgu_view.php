@@ -2,30 +2,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>Müşteri Sorgu</title>
-	<style>
-	table, th, td {
-	     border: 1px solid black;
-	}
-	</style>
+	<title>Araç Sorgu</title>
 </head>
 <body>
 	<center>
-	<?php 
-	echo "<h1>Tüm Müşterilerimiz<br/></h1>";
-	//print_r(array_values($musteri));
-	echo "<br/>";
-	echo "<table>";
-	$text =  "<tr><td>"."Ad"."</td><td>"."Soyad"."</td><td>"."Telefon"."</td><td>"."Adres"."</td><td>"."Sipariş"."</td><td>"."Notlar"."</td></tr>"."<br/>";
-	print "<strong>".$text."</strong>";
-	
-	foreach($musteri as $arr){
-		echo "<tr><td>".$arr->getName()."</td><td>".$arr->getLastName()."</td><td>".$arr->getTel()."</td><td>".$arr->getAdress()."</td><td>".$arr->getSip()."</td><td>".$arr->getNot()."</td></tr>"."<br/>";
-	}
-	echo "</table>";
-	
-	?>
-	
+		<h2>Araç Sorgula</h2>
+		<div class="w3-dropdown-click w3-center">
+		  <button id="drpdwn" onclick="dropDown()" class="w3-btn w3-blue">Sorgu Kriteri</button>
+		  <div id="kriter" class="w3-dropdown-content w3-animate-zoom">
+		    <input type="button" name="secim" value="Dosya No" onclick="secim('Dosya No')">
+		    <input type="button" name="secim" value="TC No" onclick="secim('TC No ')">
+		    <input type="button" name="secim" value="Ad Soyad" onclick="secim('Ad Soyad')">
+		  </div>
+	  </div>
+		<!-- <label>First Name</label> -->
+		<br/><br/>
+		<form class="w3-container" method="post" action="search">
+		<input class="w3-input" type="text">
+		<input type="hidden" id="hidden" name="criterion" id="orgId"/>
+		<input type="button" name="submit" value="Ara">
+		</form>
 	</center>
+	<script>
+	function dropDown() {
+	    var x = document.getElementById("kriter");
+	    if (x.className.indexOf("w3-show") == -1) {
+	        x.className += " w3-show";
+	    } else {
+	        x.className = x.className.replace(" w3-show", "");
+	    }
+	}
+
+	function secim(field) {
+		var x = document.getElementById("kriter");
+		document.getElementById("hidden").value = field;
+		document.getElementById("drpdwn").innerHTML = field;
+		x.className = x.className.replace(" w3-show", "");
+	}
+	</script>
 </body>
 </html>

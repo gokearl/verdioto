@@ -31,7 +31,6 @@ class Authentication
     public function logout()
     {
         $this->CI->session->unset_userdata('username');
-        $this->CI->session->unset_userdata('access_level');
         $this->CI->session->sess_destroy();
         return TRUE;
     }
@@ -47,6 +46,7 @@ class Authentication
     public function logged_in()
     {
         return (bool) $this->CI->session->userdata('username');
+        // echo "girdi";
     }
 
     public function errors()

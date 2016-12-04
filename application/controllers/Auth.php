@@ -11,24 +11,34 @@ class Auth extends CI_Controller {
 
     public function login()
     {
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        echo $this->form_validation->set_value('username');
-        $data['username'] = array(
-            'name' => 'username',
-            'id' => 'username',
-            'type' => 'text',
-            'value' => $this->form_validation->set_value('username')
-        );
-        $data['password'] = array(
-            'name' => 'password',
-            'id' => 'password',
-            'type' => 'password'
-        );
+        $_POST = $_GET;
+        // var_dump($_POST);
 
-        if ($this->form_validation->run() != true)
+        $this->form_validation->set_rules('username', 'Kullanıcı Adı', 'required');
+        $this->form_validation->set_rules('password', 'Şifre', 'required');
+        echo $this->form_validation->set_value('username');
+
+        // $data = array("username" => $_GET['username'], "password" => $_GET['password']);
+        // $_GET['username'] = $data['username'];
+        // $_GET['password'] = $data['password'];
+        // $data = $_GET;
+        // $data['username'] = array(
+        //     'name' => 'username',
+        //     'id' => 'username',
+        //     'type' => 'text',
+        //     'value' => $this->form_validation->set_value('username')
+        // );
+        // $data['password'] = array(
+        //     'name' => 'password',
+        //     'id' => 'password',
+        //     'type' => 'password'
+        // );
+
+        // if ($this->form_validation->run() != true)
+        if (empty($this->input->post("username")) OR empty($this->input->post("password")))
         {
-            $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+            // $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+            $data['message'] = "Kullanıcı adı ya da şifre boş bırakılamaz!";
             $this->load->view('auth/login',$data);
         }
         else
@@ -49,6 +59,6 @@ class Auth extends CI_Controller {
     public function logout()
     {
         $this->authentication->logout();
-        redirect('');
+        redirect('/');
     }
 }

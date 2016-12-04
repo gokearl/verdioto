@@ -1,5 +1,5 @@
 <?php
-// src/Musteri.php
+// src/Arac.php
 
 namespace Entity;
 
@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
 * @Entity
-* @Table(name="musteri")
+* @Table(name="arac")
 */
 
 class Arac
@@ -15,8 +15,7 @@ class Arac
 
 	/**
 	* @Id
-	* @Column(type="uuid")
-	* @GeneratedValue(strategy="AUTO")
+	* @Column(type="string")
 	*/
 	protected $id;
 

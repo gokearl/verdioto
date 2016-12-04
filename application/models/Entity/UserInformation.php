@@ -12,9 +12,9 @@ class UserInformation
 {
 
     /**
+    * @var string
+    * @Column(name="id", type="string")
     * @Id
-    * @Column(type="uuid")
-    * @GeneratedValue(strategy="AUTO")
     */
     protected $id;
 
@@ -50,7 +50,7 @@ class UserInformation
     /**
      * @var string
      *
-     * @Column(name="emai", type="string", length=255, nullable=false)
+     * @Column(name="email", type="string", length=255, nullable=false)
      * @Id
      */
     protected $email;
