@@ -5,22 +5,11 @@
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	<title>Verdi Oto Yakalamalı Araç Listesi</title>
 	<style media="screen">
-		/*.parent{
-		    width: 328px;
-		    height: 100%;
-		    margin: 0 auto;
-			padding: 0px 95px;
-			background-color: #f2f2f2;
-		    position:relative;;
-		    bottom: 0;
-		    left: 0px;
-		    right: 0px;
-			border-color: red;
-		}*/
 		input[type=text], input[type=password] {
-			width: 70%;
+			width: 250px;
 			border: 2px solid #2196F3!important;
 			border-radius: 4px;
+			/*float: right;*/
 		}
 		input[type=button], input[type=submit], input[type=reset] {
 			background-color: #2196F3!important;
@@ -34,11 +23,29 @@
 		html {
 			background-color: #f2f2f2;
 		}
-		/*div {
-		    border-radius: 5px;
-		    background-color: #f2f2f2;
-		    padding: 20px;
-		}*/
+
+		form {
+		    width: 80%;
+		    margin: 0 auto;
+		}
+
+		label, input {
+		    /* in order to define widths */
+		    display: inline-block;
+		}
+
+		label {
+		    width: 30%;
+		    /* positions the label text beside the input */
+		    text-align: right;
+		}
+
+		label + input {
+		    width: 30%;
+		    /* large margin-right to force the next element to the new-line
+		       and margin-left to create a gutter between the label and input */
+		    margin: 0 30% 0 4%;
+		}
 	</style>
 </head>
 <body>

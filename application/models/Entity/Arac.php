@@ -27,11 +27,18 @@ class Arac
 	protected $dosyaNo;
 
 	/**
-	* @var string $adSoyad
-	* @Column(name="ad_soyad", type="string")
+	* @var string $ad
+	* @Column(name="ad", type="string")
 	*/
 
-	protected $adSoyad;
+	protected $ad;
+
+	/**
+	* @var string $soyad
+	* @Column(name="soyad", type="string")
+	*/
+
+	protected $soyad;
 
 	/**
 	* @var integer $tcNo
@@ -41,39 +48,39 @@ class Arac
 	protected $tcNo;
 
 	/**
-	* @var integer $adres
+	* @var string $adres
 	* @Column(name="adres", type="string")
 	*/
 
 	protected $adres;
 
   /**
-  * @var integer $adres2
+  * @var string $adres2
   * @Column(name="adres_2", type="string")
   */
 
   protected $adres2;
 
   /**
-  * @var integer $adres3
-  * @Column(name="adres_3", type="string")
+  * @var string $ilIlce
+  * @Column(name="il_ilce", type="string")
   */
 
-  protected $adres3;
+  protected $ilIlce;
 
 	/**
-	* @var integer $marka
+	* @var string $marka
 	* @Column(name="marka", type="string")
 	*/
 
 	protected $marka;
 
 	/**
-	* @var integer $tip
-	* @Column(name="tip", type="string")
+	* @var string $cins
+	* @Column(name="cins", type="string")
 	*/
 
-	protected $tip;
+	protected $cins;
 
   /**
   * @var integer $model
@@ -83,13 +90,53 @@ class Arac
   protected $model;
 
   /**
-  * @var integer $telefon
+  * @var string $telefon
   * @Column(name="telefon", type="string")
   */
 
   protected $telefon;
 
+  /**
+  * @var bigint $musteriNo
+  * @Column(name="musteri_no", type="bigint")
+  */
 
+  protected $musteriNo;
+
+  /**
+  * @var string $imza
+  * @Column(name="imza", type="string")
+  */
+
+  protected $imza;
+
+  /**
+  * @var string $hacizTarihi
+  * @Column(name="haciz_tarihi", type="string")
+  */
+
+  protected $hacizTarihi;
+
+  /**
+  * @var string $statu
+  * @Column(name="statu", type="string")
+  */
+
+  protected $statu;
+
+  /**
+  * @var string $plaka
+  * @Column(name="plaka", type="string")
+  */
+
+  protected $plaka;
+
+  /**
+  * @var string $icraDairesi
+  * @Column(name="icra_dairesi", type="string")
+  */
+
+  protected $icra_dairesi;
 
     /**
      * Get the value of Id
@@ -140,25 +187,49 @@ class Arac
     }
 
     /**
-     * Get the value of Ad Soyad
+     * Get the value of Ad
      *
-     * @return string $adSoyad
+     * @return string $ad
      */
-    public function getAdSoyad()
+    public function getAd()
     {
-        return $this->adSoyad;
+        return $this->ad;
     }
 
     /**
-     * Set the value of Ad Soyad
+     * Set the value of Ad
      *
-     * @param string $adSoyad adSoyad
+     * @param string $ad ad
      *
      * @return self
      */
-    public function setAdSoyad($adSoyad)
+    public function setAd($ad)
     {
-        $this->adSoyad = $adSoyad;
+        $this->ad = $ad;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Soyad
+     *
+     * @return string $soyad
+     */
+    public function getSoyad()
+    {
+        return $this->soyad;
+    }
+
+    /**
+     * Set the value of Soyad
+     *
+     * @param string $soyad soyad
+     *
+     * @return self
+     */
+    public function setSoyad($soyad)
+    {
+        $this->soyad = $soyad;
 
         return $this;
     }
@@ -190,7 +261,7 @@ class Arac
     /**
      * Get the value of Adres
      *
-     * @return integer $adres
+     * @return string $adres
      */
     public function getAdres()
     {
@@ -200,7 +271,7 @@ class Arac
     /**
      * Set the value of Adres
      *
-     * @param integer $adres adres
+     * @param string $adres adres
      *
      * @return self
      */
@@ -214,7 +285,7 @@ class Arac
     /**
      * Get the value of Adres
      *
-     * @return integer $adres2
+     * @return string $adres2
      */
     public function getAdres2()
     {
@@ -224,7 +295,7 @@ class Arac
     /**
      * Set the value of Adres
      *
-     * @param integer $adres2 adres2
+     * @param string $adres2 adres2
      *
      * @return self
      */
@@ -236,25 +307,25 @@ class Arac
     }
 
     /**
-     * Get the value of Adres
+     * Get the value of Il Ilce
      *
-     * @return integer $adres3
+     * @return string $ilIlce
      */
-    public function getAdres3()
+    public function getIlIlce()
     {
-        return $this->adres3;
+        return $this->ilIlce;
     }
 
     /**
-     * Set the value of Adres
+     * Set the value of Il Ilce
      *
-     * @param integer $adres3 adres3
+     * @param string $ilIlce ilIlce
      *
      * @return self
      */
-    public function setAdres3($adres3)
+    public function setIlIlce($ilIlce)
     {
-        $this->adres3 = $adres3;
+        $this->ilIlce = $ilIlce;
 
         return $this;
     }
@@ -262,7 +333,7 @@ class Arac
     /**
      * Get the value of Marka
      *
-     * @return integer $marka
+     * @return string $marka
      */
     public function getMarka()
     {
@@ -272,7 +343,7 @@ class Arac
     /**
      * Set the value of Marka
      *
-     * @param integer $marka marka
+     * @param string $marka marka
      *
      * @return self
      */
@@ -284,25 +355,25 @@ class Arac
     }
 
     /**
-     * Get the value of Tip
+     * Get the value of Cins
      *
-     * @return integer $tip
+     * @return string $cins
      */
-    public function getTip()
+    public function getCins()
     {
-        return $this->tip;
+        return $this->cins;
     }
 
     /**
-     * Set the value of Tip
+     * Set the value of Cins
      *
-     * @param integer $tip tip
+     * @param string $cins cins
      *
      * @return self
      */
-    public function setTip($tip)
+    public function setCins($cins)
     {
-        $this->tip = $tip;
+        $this->cins = $cins;
 
         return $this;
     }
@@ -334,7 +405,7 @@ class Arac
     /**
      * Get the value of Telefon
      *
-     * @return integer $telefon
+     * @return string $telefon
      */
     public function getTelefon()
     {
@@ -344,7 +415,7 @@ class Arac
     /**
      * Set the value of Telefon
      *
-     * @param integer $telefon telefon
+     * @param string $telefon telefon
      *
      * @return self
      */
@@ -355,11 +426,154 @@ class Arac
         return $this;
     }
 
-    public function __toString()
+    /**
+     * Get the value of Musteri No
+     *
+     * @return bigint $musteriNo
+     */
+    public function getMusteriNo()
+    {
+        return $this->musteriNo;
+    }
+
+    /**
+     * Set the value of Musteri No
+     *
+     * @param bigint $musteriNo musteriNo
+     *
+     * @return self
+     */
+    public function setMusteriNo($musteriNo)
+    {
+        $this->musteriNo = $musteriNo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Imza
+     *
+     * @return string $imza
+     */
+    public function getImza()
+    {
+        return $this->imza;
+    }
+
+    /**
+     * Set the value of Imza
+     *
+     * @param string $imza imza
+     *
+     * @return self
+     */
+    public function setImza($imza)
+    {
+        $this->imza = $imza;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Haciz Tarihi
+     *
+     * @return string $hacizTarihi
+     */
+    public function getHacizTarihi()
+    {
+        return $this->hacizTarihi;
+    }
+
+    /**
+     * Set the value of Haciz Tarihi
+     *
+     * @param string $hacizTarihi hacizTarihi
+     *
+     * @return self
+     */
+    public function setHacizTarihi($hacizTarihi)
+    {
+        $this->hacizTarihi = $hacizTarihi;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Statu
+     *
+     * @return string $statu
+     */
+    public function getStatu()
+    {
+        return $this->statu;
+    }
+
+    /**
+     * Set the value of Statu
+     *
+     * @param string $statu statu
+     *
+     * @return self
+     */
+    public function setStatu($statu)
+    {
+        $this->statu = $statu;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Plaka
+     *
+     * @return string $plaka
+     */
+    public function getPlaka()
+    {
+        return $this->plaka;
+    }
+
+    /**
+     * Set the value of Plaka
+     *
+     * @param string $plaka plaka
+     *
+     * @return self
+     */
+    public function setPlaka($plaka)
+    {
+        $this->plaka = $plaka;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Icra Dairesi
+     *
+     * @return string $icraDairesi
+     */
+    public function getIcraDairesi()
+    {
+        return $this->icra_dairesi;
+    }
+
+    /**
+     * Set the value of Icra Dairesi
+     *
+     * @param string $icraDairesi icra_dairesi
+     *
+     * @return self
+     */
+    public function setIcraDairesi($icra_dairesi)
+    {
+        $this->icra_dairesi = $icra_dairesi;
+
+        return $this;
+    }
+
+	public function __toString()
   	{
   		return $this->ad . ' '. $this->soyad. ' '. $this->telefon. ' '. $this->adres. ' '. $this->siparis
   		. ' '. $this->notlar;
   	}
-
 }
  ?>

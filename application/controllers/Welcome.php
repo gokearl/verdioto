@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->em = $this->doctrine->em;
+		$this->load->model('Arac_Model');
 	}
 
 	public function index()
@@ -34,6 +35,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function home(){
+		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
 		$this->load->view('header');
 		$this->load->view('anasayfa_view');
 		$this->load->view('footer');
@@ -41,6 +43,7 @@ class Welcome extends CI_Controller {
 
 	public function arac_kayit()
 	{
+		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
 		$this->load->view('header');
 		$this->load->view('kayit_view');
 		$this->load->view('footer');
@@ -48,6 +51,7 @@ class Welcome extends CI_Controller {
 
 	public function gonder()
 	{
+		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
 		$this->load->library("form_validation");
 		$this->form_validation->set_rules('dosyano', 'Dosya No', 'required');
 		$this->form_validation->set_rules('tcno', 'TC No', 'numeric');
@@ -60,16 +64,23 @@ class Welcome extends CI_Controller {
 		else{
 			$arac = new Entity\Arac();
 			$arac->setId(uniqid());
+			$arac->setMusteriNo($this->input->post("musterino"));
+			$arac->setIcraDairesi($this->input->post("icradairesi"));
+			$arac->setStatu($this->input->post("statu"));
 			$arac->setDosyaNo($this->input->post("dosyano"));
-			$arac->setAdSoyad($this->input->post("adsoyad"));
+			$arac->setAd($this->input->post("ad"));
+			$arac->setSoyad($this->input->post("soyad"));
 			$arac->setTelefon($this->input->post("telefon"));
+			$arac->setImza($this->input->post("imza"));
 			$arac->setAdres($this->input->post("adres"));
 			$arac->setAdres2($this->input->post("adres2"));
-			$arac->setAdres3($this->input->post("adres3"));
+			$arac->setIlIlce($this->input->post("ililce"));
 			$arac->setTcNo($this->input->post("tcno"));
 			$arac->setMarka($this->input->post("marka"));
 			$arac->setModel($this->input->post("model"));
-			$arac->setTip($this->input->post("tip"));
+			$arac->setCins($this->input->post("tip"));
+			$arac->setPlaka($this->input->post("plaka"));
+			$arac->setHacizTarihi($this->input->post("haciztarihi"));
 			$this->em->persist($arac);
 			$this->em->flush();
 			$data['arac'] = $arac;
@@ -81,6 +92,7 @@ class Welcome extends CI_Controller {
 
 	public function arac_sorgu()
 	{
+		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
 		// echo $this->input->post('criterion')
 		// $qb = $this->doctrine->em->createQueryBuilder();
 		// $query = $qb->select('m')
@@ -94,7 +106,13 @@ class Welcome extends CI_Controller {
 
 	public function search()
 	{
-		var_dump($_POST);
-		echo $this->input->post('criterion');
+		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
+		$criterion = $this->input->post('criterion');
+		$value = $this->input->post('value');
+		$result = $this->Arac_Model->findByCritOrderByDate($criterion, $value);
+		var_dump($result);
+		// foreach ($result as $key => $value) {
+		// 	# code...
+		// }
 	}
 }
