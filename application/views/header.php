@@ -21,7 +21,7 @@
 			cursor: pointer;
 		}
 		html {
-			background-color: #f2f2f2;
+			background-color: #151E29;
 		}
 
 		form {
@@ -38,6 +38,7 @@
 		    width: 30%;
 		    /* positions the label text beside the input */
 		    text-align: right;
+			color: white;
 		}
 
 		label + input {
@@ -46,7 +47,17 @@
 		       and margin-left to create a gutter between the label and input */
 		    margin: 0 30% 0 4%;
 		}
+		h2 {
+			color: white;
+		}
 	</style>
+	<?php if ($this->agent->is_mobile()): ?>
+		<style media="screen">
+			label, input {
+				display: inline;
+			}
+		</style>
+	<?php endif; ?>
 </head>
 <body>
 	<center>

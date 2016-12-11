@@ -93,13 +93,6 @@ class Welcome extends CI_Controller {
 	public function arac_sorgu()
 	{
 		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
-		// echo $this->input->post('criterion')
-		// $qb = $this->doctrine->em->createQueryBuilder();
-		// $query = $qb->select('m')
-		// 	    ->from('Entity\Musteri','m');
-		// $query = $qb->getQuery();
-		// //$query = $this->em->createQuery('SELECT m FROM app/application/models/Entity/Musteri m ');
-		// $sorgu['musteri'] = $query->getResult();
 		$this->load->view('header');
 		$this->load->view("sorgu_view");
 	}
@@ -108,11 +101,30 @@ class Welcome extends CI_Controller {
 	{
 		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
 		$criterion = $this->input->post('criterion');
-		$value = $this->input->post('value');
-		$result = $this->Arac_Model->findByCritOrderByDate($criterion, $value);
-		var_dump($result);
-		// foreach ($result as $key => $value) {
-		// 	# code...
-		// }
+
+		if ($criterion == '') {
+			throw new Exception("Lütfen sorgu kriteri seçin!", 1);
+
+		} else {
+			// $value = (is_numeric($this->input->post('value')) ? (int)$this->input->post('value') : $this->input->post('value'));
+			$value = $this->input->post('value');
+			$result = $this->Arac_Model->findByCritOrderByDate($criterion, $value);
+			$data['list'] = $result;
+			$this->load->view('header');
+			$this->load->view("list", $data);
+		}
+	}
+
+	public function details()
+	{
+		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
+		$id = $this->uri->segment(3);
+		$arac = $this->Arac_Model->find($id);
+		if ($arac != null) {
+			$data['arac'] = $arac;
+			$this->load->view('header');
+			$this->load->view("details", $data);
+			$this->load->view('footer');
+		}
 	}
 }
