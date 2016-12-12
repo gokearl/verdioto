@@ -36,7 +36,7 @@
           <h2>Kullanıcı Girişi</h2>
         </div><br/>
         <div id="message" ><?php echo $message;?></div>
-        <?php echo form_open("auth/login"); ?>
+        <form class="w3-container" method="post" action="auth/login">
         <label for="username">Username:</label><br/>
         <input type="text" name="username" value="<?php echo set_value('username'); ?>"/><br/>
         <label for="password">Password:</label><br/>
