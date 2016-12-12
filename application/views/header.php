@@ -62,7 +62,7 @@
 <body>
 	<center>
 		<div class="w3-container w3-blue">
-		<h2><font ><a href="https://verdioto.herokuapp.com/">Verdi Oto</a></font> Yakalamalı Araç Listesi</h2>
+		<h2><font ><a href="https://verdioto.herokuapp.com/">Verdi</a></font> Yakalamalı Araç Listesi</h2>
 		</div>
 	</center>
 	<br/>
