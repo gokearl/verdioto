@@ -10,6 +10,7 @@ class Authentication
     {
         $this->CI =& get_instance();
         $this->CI->load->model('Auth_Model');
+        $this->load->library('session');
     }
 
     public function login($username, $password)
