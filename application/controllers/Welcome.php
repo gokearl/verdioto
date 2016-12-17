@@ -33,8 +33,8 @@ class Welcome extends CI_Controller {
         }
 		if (!$this->authentication->logged_in()) redirect('auth/login');
 		echo $this->session->userdata('username');
-    	$data['username'] = $this->authentication->user()->getUserName();
-    	$data['last_login'] = $this->authentication->user()->getLastLogin();
+    	// $data['username'] = $this->authentication->user()->getUserName();
+    	// $data['last_login'] = $this->authentication->user()->getLastLogin();
 		$this->home();
 	}
 
