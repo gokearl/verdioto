@@ -33,6 +33,7 @@
     <div>
       <form class="w3-container">
         <div class="w3-container w3-blue">
+            <?php echo sys_get_temp_dir(); ?>
           <h2>Kullanıcı Girişi</h2>
         </div><br/>
         <div id="message" ><?php echo $message;?></div>
