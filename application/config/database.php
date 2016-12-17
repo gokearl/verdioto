@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'ec2-54-217-244-3.eu-west-1.compute.amazonaws.com',
+	'hostname' => 'pgsql:host=ec2-54-217-244-3.eu-west-1.compute.amazonaws.com',
 	'username' => 'xjqoyhmvyzvrzd',
 	'password' => '9WjWk50lWU3g-IfLOPsVRro1eU',
 	'database' => 'db5d6n6p3cogel',
