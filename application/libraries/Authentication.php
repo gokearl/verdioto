@@ -19,6 +19,7 @@ class Authentication
         if ($result != null && is_array($result))
         {
           $this->CI->session->set_userdata($result);
+          $_SESSION["username"] = $username;
           return true;
         }
         else
