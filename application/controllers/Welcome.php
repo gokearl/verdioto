@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public $em;
-	mkdir('temp', 0777)
+	mkdir('temp', 0777);
 	function __construct()
 	{
 		parent::__construct();
