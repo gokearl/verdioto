@@ -377,7 +377,7 @@ $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
-$config['sess_save_path'] = tmpfile();
+$config['sess_save_path'] = mkdir('temp', 0777);
 /*
 |--------------------------------------------------------------------------
 | Cookie Related Variables
