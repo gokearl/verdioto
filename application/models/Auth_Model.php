@@ -12,6 +12,7 @@ class Auth_Model extends CI_Model
     public function user($username)
     {
         $result = $this->doctrine->em->getRepository('Entity\UserInformation')->findBy(array('username' => $username));
+        var_dump($result);
         return $result[0];
     }
 
