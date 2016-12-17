@@ -28,8 +28,11 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		mkdir('temp_file', 0777);
+		if (!is_dir('temp_file')){
+            mkdir('temp_file', 0777);
+        }
 		if (!$this->authentication->logged_in()) redirect('auth/login');
+		echo $this->CI->session->userdata('username');
     	$data['username'] = $this->authentication->user()->getUserName();
     	$data['last_login'] = $this->authentication->user()->getLastLogin();
 		$this->home();

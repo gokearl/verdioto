@@ -46,6 +46,7 @@ class Authentication
     public function logged_in()
     {
         echo $this->CI->session->userdata('username');
+        return true;
         // return (bool) $this->CI->session->userdata('username');
     }
 
