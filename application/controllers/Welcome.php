@@ -19,7 +19,6 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public $em;
-	mkdir('temp', 0777);
 	function __construct()
 	{
 		parent::__construct();
@@ -29,6 +28,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		mkdir('temp', 0777);
 		if (!$this->authentication->logged_in()) redirect('auth/login');
     	$data['username'] = $this->authentication->user()->getUserName();
     	$data['last_login'] = $this->authentication->user()->getLastLogin();
