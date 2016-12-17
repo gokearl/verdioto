@@ -48,7 +48,12 @@ class Authentication
     {
         // echo $this->CI->session->userdata('username');
         // return true;
-        return (bool) $this->CI->session->userdata('username');
+        // return (bool) $this->CI->session->userdata('username');
+        if ($_SESSION["username"] != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function errors()
