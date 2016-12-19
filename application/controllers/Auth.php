@@ -33,7 +33,7 @@ class Auth extends CI_Controller {
         // );
 
         // if ($this->form_validation->run() != true)
-        if (empty($this->input->post("username")) OR empty($this->input->post("password")))
+        if (!($this->input->post("username")) OR !($this->input->post("password")))
         {
             // echo "girdi";
             // $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
