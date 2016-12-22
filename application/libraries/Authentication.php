@@ -10,6 +10,7 @@ class Authentication
     {
         $this->CI =& get_instance();
         $this->CI->load->model('Auth_Model');
+        $this->CI->load->driver('cache');
     }
 
     public function login($username, $password)
@@ -19,8 +20,10 @@ class Authentication
         if ($result != null && is_array($result))
         {
         //   $this->CI->session->set_userdata($result);
-            $redis = new Predis\Client('redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769');
-            $redis->set('username', $username);
+            // $redis = new Predis\Client('redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769');
+            // $redis->set('username', $username);
+
+            $this->CI->cache->redis->save('username', $username, 10);
             return true;
         }
         else
@@ -50,7 +53,7 @@ class Authentication
         // echo $this->CI->session->userdata('username');
         // return true;
         // return (bool) $this->CI->session->userdata('username');
-        return (bool) $redis->get('username');
+        return (bool) $this->CI->cache->redis->get('username');
     }
 
     public function errors()
