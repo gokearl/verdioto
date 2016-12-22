@@ -370,16 +370,16 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'redis';
-$config['sess_cookie_name']		= 'ci_session';
-$config['sess_expiration']		= 7200;
-$config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= TRUE;
-$config['sess_table_name']		= 'ci_sessions';
-$config['sess_match_ip']		= FALSE;
-$config['sess_match_useragent']	= TRUE;
-$config['sess_time_to_update']	= 300;
-$config['sess_save_path'] = "redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769?weight=1";
+// $config['sess_cookie_name']		= 'ci_session';
+// $config['sess_expiration']		= 7200;
+// $config['sess_expire_on_close']	= FALSE;
+// $config['sess_encrypt_cookie']	= FALSE;
+// $config['sess_use_database']	= TRUE;
+// $config['sess_table_name']		= 'ci_sessions';
+// $config['sess_match_ip']		= FALSE;
+// $config['sess_match_useragent']	= TRUE;
+// $config['sess_time_to_update']	= 300;
+$config['sess_save_path'] = "redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769";
 /*
 |--------------------------------------------------------------------------
 | Cookie Related Variables
