@@ -14,11 +14,14 @@
 		<div class="w3-container w3-center">
 		<?php echo "<br/>" ?>
 		<ul class="w3-navbar w3-border w3-blue">
-		<li class="w3-navitem"><h2><a href="<?php echo base_url(); ?>index.php/welcome/arac_sorgu">Araç Sorgu</a></h2></li>
-	</ul><br/>
+			<li class="w3-navitem"><h2><a href="<?php echo base_url(); ?>index.php/welcome/arac_sorgu">Araç Sorgu</a></h2></li>
+		</ul><br/>
 		<ul class="w3-navbar w3-border w3-blue">
-		<li class="w3-navitem"><h2><a href="<?php echo base_url(); ?>index.php/welcome/arac_kayit">Yeni Kayıt</a></h2></li>
-	</ul>
+			<li class="w3-navitem"><h2><a href="<?php echo base_url(); ?>index.php/welcome/arac_kayit">Yeni Kayıt</a></h2></li>
+		</ul><br/>
+		<ul class="w3-navbar w3-border w3-blue">
+			<li class="w3-navitem"><h2><a href="<?php echo base_url(); ?>index.php/welcome/excel_import">Excel'den Aktar</a></h2></li>
+		</ul>
 			<!-- <button class="w3-btn w3-xlarge w3-blue"><a href="<?php echo base_url(); ?>index.php/welcome/arac_kayit">Yeni Kayıt</a></button>
 			<br/><br/>
 			<div class="w3-dropdown-click w3-left">

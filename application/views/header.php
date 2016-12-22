@@ -47,9 +47,13 @@
 		       and margin-left to create a gutter between the label and input */
 		    margin: 0 30% 0 4%;
 		}
-		h2 {
+		h2, p, input[type=file] {
 			color: white;
 		}
+		#message
+        {
+            color: red;
+        }
 	</style>
 	<?php if ($this->agent->is_mobile()): ?>
 		<style media="screen">
@@ -62,7 +66,7 @@
 <body>
 	<center>
 		<div class="w3-container w3-blue">
-		<h2><font ><a href="https://verdioto.herokuapp.com/">Verdi</a></font> Yakalamalı Araç Listesi</h2>
+		<h2><font ><a href="<?php echo base_url(); ?>index.php/welcome/home">Verdi</a></font> Yakalamalı Araç Listesi</h2>
 		</div>
 	</center>
 	<br/>

@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://verdioto.herokuapp.com/';
+// $config['base_url'] = 'http://kingsportv.com/verdi/';
+// $config['base_url'] = 'http://localhost:8080/arac-veritabani/';
 
 /*
 |--------------------------------------------------------------------------
@@ -377,7 +379,7 @@ $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
-$config['sess_save_path'] = 'temp_file';
+$config['sess_save_path'] = sys_get_temp_dir();
 /*
 |--------------------------------------------------------------------------
 | Cookie Related Variables

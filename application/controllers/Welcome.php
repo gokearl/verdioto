@@ -28,11 +28,10 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		if (!is_dir('temp_file')){
-            mkdir('temp_file', 0777);
-        }
+		// if (!is_dir('temp_file')){
+        //     mkdir('temp_file', 0777);
+        // }
 		if (!$this->authentication->logged_in()) redirect('auth/login');
-		echo $this->session->userdata('username');
     	// $data['username'] = $this->authentication->user()->getUserName();
     	// $data['last_login'] = $this->authentication->user()->getLastLogin();
 		$this->home();
@@ -112,6 +111,8 @@ class Welcome extends CI_Controller {
 		} else {
 			// $value = (is_numeric($this->input->post('value')) ? (int)$this->input->post('value') : $this->input->post('value'));
 			$value = $this->input->post('value');
+			$value = strtoupper($value);
+			$value = str_replace(array('i', 'ı', 'ü', 'ğ', 'ş', 'ö', 'ç'), array('İ', 'I', 'Ü', 'Ğ', 'Ş', 'Ö', 'Ç'), $value);
 			$result = $this->Arac_Model->findByCritOrderByDate($criterion, $value);
 			$data['list'] = $result;
 			$this->load->view('header');
@@ -131,4 +132,43 @@ class Welcome extends CI_Controller {
 			$this->load->view('footer');
 		}
 	}
+	public function excel_import()
+	{
+		if (!$this->authentication->logged_in()) die('Lütfen giriş yapın!');
+		$data['error'] = '';
+		$this->load->view('header');
+		$this->load->view("import", $data);
+	}
+
+	public function upload()
+	{
+		$this->load->helper("file");
+		delete_files('uploads');
+		$config['upload_path']          = './uploads/';
+		$config['allowed_types']        = 'csv';
+		$this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload('userfile'))
+		{
+				$data['error'] = array('error' => $this->upload->display_errors());
+				$this->load->view('header');
+				$this->load->view('import', $data);
+		}
+		else
+		{
+			$this->load->library('csvreader');
+			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
+			$file_name = $upload_data['file_name'];
+			$result = $this->csvreader->parse_file('uploads/'.$file_name);
+			$this->Arac_Model->deleteAll();
+			if ($this->Arac_Model->saveAll($result)) {
+				$this->load->view('header');
+				$this->load->view('upload_success', $data);
+			} else {
+				$data['error'] = array('error' => $this->upload->display_errors());
+				$this->load->view('header');
+				$this->load->view('import', $data);
+			}
+		}
+	}
 }
+// redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769

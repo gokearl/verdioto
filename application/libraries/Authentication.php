@@ -18,9 +18,10 @@ class Authentication
         $result = $this->CI->Auth_Model->login($username, $password);
         if ($result != null && is_array($result))
         {
-          $this->CI->session->set_userdata($result);
-          $_SESSION["username"] = $username;
-          return true;
+        //   $this->CI->session->set_userdata($result);
+            $redis = new Predis\Client('redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769');
+            $redis->set('username', $username);
+            return true;
         }
         else
         {
@@ -49,11 +50,7 @@ class Authentication
         // echo $this->CI->session->userdata('username');
         // return true;
         // return (bool) $this->CI->session->userdata('username');
-        if ($_SESSION["username"] != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return (bool) $redis->get('username');
     }
 
     public function errors()
