@@ -6,7 +6,7 @@ class Authentication
     protected $CI;
     private $errors = array();
 
-    require 'Predis/Autoloader.php';
+    require_once('Predis/Autoloader.php');
 
     Predis\Autoloader::register();
 
