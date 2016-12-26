@@ -1,15 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require 'Predis/Autoloader.php';
 
 class Authentication
 {
     protected $CI;
     private $errors = array();
-
-
-
-    Predis\Autoloader::register();
-
+    
     public function __construct()
     {
         $this->CI =& get_instance();
