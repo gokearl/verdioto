@@ -6,6 +6,10 @@ class Authentication
     protected $CI;
     private $errors = array();
 
+    require 'Predis/Autoloader.php';
+
+    Predis\Autoloader::register();
+
     public function __construct()
     {
         $this->CI =& get_instance();
@@ -20,8 +24,8 @@ class Authentication
         if ($result != null && is_array($result))
         {
             $this->CI->session->set_userdata($result);
-            // $redis = new Predis\Client('redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769');
-            // $redis->set('username', $username);
+            $redis = new Predis\Client('redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769');
+            $redis->set('username', $username);
 
             // $this->CI->cache->redis->save('username', $username, 10);
             return true;
@@ -52,8 +56,8 @@ class Authentication
     {
         // echo $this->CI->session->userdata('username');
         // return true;
-        return (bool) $this->CI->session->userdata('username');
-        // return (bool) $this->CI->cache->redis->get('username');
+        // return (bool) $this->CI->session->userdata('username');
+        return (bool) $this->CI->cache->redis->get('username');
     }
 
     public function errors()
