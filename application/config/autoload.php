@@ -79,7 +79,7 @@ $autoload['libraries'] = array('doctrine', 'Authentication', 'session', 'form_va
 |	$autoload['drivers'] = array('cache' => 'cch');
 |
 */
-$autoload['drivers'] = array();
+$autoload['drivers'] = array('');
 
 /*
 | -------------------------------------------------------------------
