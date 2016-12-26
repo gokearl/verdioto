@@ -134,8 +134,8 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 			return $this->_fail();
 		}
 
-		// $redis = new Redis();
-		$redis = new Predis\Client
+		$redis = new Redis();
+		// $redis = new Predis\Client;
 		if ( ! $redis->connect($this->_config['save_path']['host'], $this->_config['save_path']['port'], $this->_config['save_path']['timeout']))
 		{
 			log_message('error', 'Session: Unable to connect to Redis with the configured settings.');
