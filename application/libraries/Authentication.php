@@ -4,7 +4,7 @@ class Authentication
 {
     protected $CI;
     private $errors = array();
-    protected $redis = new Predis\Client('redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769');
+    // protected $redis = new Predis\Client('redis://h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com:16769');
 
     public function __construct()
     {
@@ -20,9 +20,9 @@ class Authentication
         if ($result != null && is_array($result))
         {
             // $this->CI->session->set_userdata($result);
-            $redis->set('username', $username);
+            // $redis->set('username', $username);
 
-            // $this->CI->cache->redis->save('username', $username, 10);
+            $this->CI->cache->redis->save('username', $username, 10);
             return true;
         }
         else
@@ -43,7 +43,7 @@ class Authentication
     {
         //if no id was passed use the current users id
         // $username || $username = $this->CI->session->userdata('username');
-        $username || $username = $redis->set('username', $username);
+        $username || $username = $this->CI->cache->redis->save('username', $username, 10);
         $user = $this->CI->Auth_Model->user($username);
         return (object)$user;
     }
@@ -53,7 +53,7 @@ class Authentication
         // echo $this->CI->session->userdata('username');
         // return true;
         // return (bool) $this->CI->session->userdata('username');
-        return (bool) $redis->get('username', $username);
+        return (bool) $this->CI->cache->redis->get('username', $username, 10);
     }
 
     public function errors()

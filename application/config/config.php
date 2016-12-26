@@ -516,3 +516,10 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+$config['socket_type'] = 'tcp'; //`tcp` or `unix`
+$config['socket'] = '/var/run/redis.sock'; // in case of `unix` socket type
+$config['host'] = '//h:pb4714986433f567033f960e418d8a74c35ab0394c33288b6ab722a886df5ef7e@ec2-176-34-114-19.eu-west-1.compute.amazonaws.com';
+$config['password'] = NULL;
+$config['port'] = 6379;
+$config['timeout'] = 0;
